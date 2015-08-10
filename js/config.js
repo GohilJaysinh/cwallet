@@ -1,12 +1,8 @@
-CitrusPay.Merchant.Sandbox = {	
-	// Merchant details
+var mKey= '18IZE4MDYJTCKUCJ3N67';
+var vanity= 'nagama2';
+CitrusPay.Merchant.Config = {
 	Merchant: {
-		accessKey: '18IZE4MDYJTCKUCJ3N67',
-		//accessKey: 'E5FPGJXGZR774NBYNS11',
-		vanityUrl: 'nagama2'
-		//vanityUrl: 'mytest'
+		accessKey: mKey,
+		vanityUrl: vanity
 	}
 };
-
-//Assign object to merchant config
-CitrusPay.Merchant.Config = CitrusPay.Merchant.Sandbox;
