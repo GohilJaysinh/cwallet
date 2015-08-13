@@ -15,7 +15,7 @@
 </head>
 
 <body> 
-<div id="citrusWallet">
+<div id="citrusWallet" >
 </div>
     <!-- Page Content -->
     <div class="container" style=" width:100%;text-align:center !important;">
@@ -54,19 +54,22 @@
         </div>
     </div>
 	<script type="text/javascript" src = "js/citrusIframe.js"></script>
-	<script>
+	<script>	
 			var amount = "1.0";
 			var mtx = 'mtx_'+ new Date().getTime();
-			var accessKey ="18IZE4MDYJTCKUCJ3N67"
-			var data =mtx+amount;
-			var hash = CryptoJS.HmacSHA1(data, accessKey);
+			var accessKey ="18IZE4MDYJTCKUCJ3N67";
+			var secretKey = "259fe54d60ff40cf244702ab62cc8befa1d3d11c";
+			var data = "merchantAccessKey="+accessKey+"&transactionId="+mtx+"&amount="+amount;
+			var hash = CryptoJS.HmacSHA1(data, secretKey);
             var signature = hash.toString(CryptoJS.enc.Hex);
+			var iframePar = document.getElementById('citrusWallet');
 			
 			var citrusUserJsonData = {
 				orderAmount: amount,
 				txnId: mtx,				
 				requestSignature: signature,
-				returnUrl: 'http://localhost/citrusWallet/cart.html'
+				removeIF: iframePar,
+				returnUrl: 'http://localhost/citrusWallet/rep.php'
 			}
 			document.getElementById('trigger-citrus-pay').addEventListener('click', function(){
 			citrusWalletPopUp.process_request(JSON.stringify(citrusUserJsonData));
